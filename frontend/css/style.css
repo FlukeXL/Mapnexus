@@ -1510,3 +1510,282 @@ section {
         flex-wrap: nowrap;
     }
 }
+
+
+/* ========== Info Bar ========== */
+.info-bar {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(26, 26, 26, 0.98));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: var(--transition-normal);
+}
+
+.info-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0.75rem var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.info-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    flex-shrink: 0;
+    transition: var(--transition-normal);
+}
+
+.info-icon svg {
+    color: var(--gold);
+    filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
+}
+
+.info-item:hover .info-icon {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.info-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.info-value-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin-bottom: 0.15rem;
+}
+
+.info-value {
+    font-family: var(--font-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.info-unit {
+    font-size: 0.75rem;
+    color: var(--gold-light);
+    opacity: 0.8;
+}
+
+.info-status {
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-left: 0.25rem;
+}
+
+.info-status.good {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.info-status.moderate {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.info-status.unhealthy {
+    background: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.info-status.smooth {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.info-status.smooth svg {
+    fill: #4caf50;
+    filter: drop-shadow(0 0 4px rgba(76, 175, 80, 0.5));
+}
+
+.traffic-smooth {
+    color: var(--white) !important;
+    font-size: 1rem !important;
+}
+
+.weather-desc {
+    font-size: 0.8rem;
+    color: var(--gold-light);
+    opacity: 0.9;
+}
+
+.info-detail {
+    font-size: 0.65rem;
+    color: var(--medium-gray);
+    opacity: 0.8;
+}
+
+.info-divider {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(212, 175, 55, 0.3),
+        transparent
+    );
+    flex-shrink: 0;
+}
+
+/* PM2.5 Color Indicators */
+.pm25-icon.good {
+    border-color: rgba(76, 175, 80, 0.5);
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.05));
+}
+
+.pm25-icon.moderate {
+    border-color: rgba(255, 193, 7, 0.5);
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 193, 7, 0.05));
+}
+
+.pm25-icon.unhealthy {
+    border-color: rgba(244, 67, 54, 0.5);
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.15), rgba(244, 67, 54, 0.05));
+}
+
+/* Traffic Status Colors */
+.traffic-icon.smooth {
+    border-color: rgba(76, 175, 80, 0.5);
+}
+
+.traffic-icon.moderate {
+    border-color: rgba(255, 193, 7, 0.5);
+}
+
+.traffic-icon.heavy {
+    border-color: rgba(244, 67, 54, 0.5);
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.info-icon svg {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.info-item:hover .info-icon svg {
+    animation: none;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .info-container {
+        overflow-x: auto;
+        justify-content: flex-start;
+        scrollbar-width: none;
+    }
+    
+    .info-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .info-item {
+        flex: 0 0 auto;
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .info-bar {
+        top: 70px;
+    }
+    
+    .info-container {
+        padding: 0.5rem var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+    
+    .info-item {
+        min-width: 160px;
+    }
+    
+    .info-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .info-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .info-value {
+        font-size: 1.2rem;
+    }
+    
+    .info-label {
+        font-size: 0.65rem;
+    }
+    
+    .info-detail {
+        font-size: 0.6rem;
+    }
+}
+
+/* Adjust Hero Section for Info Bar */
+.hero {
+    margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        margin-top: 50px;
+    }
+}
