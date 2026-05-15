@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Info Bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .info-bar {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98), rgba(40, 40, 40, 0.98));
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .info-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.25rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.02));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+        }
+        
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.08));
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .info-icon svg {
+            width: 28px;
+            height: 28px;
+            color: #d4af37;
+        }
+        
+        .info-content {
+            flex: 1;
+        }
+        
+        .info-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #f4e4c1;
+            margin-bottom: 0.35rem;
+            font-weight: 600;
+        }
+        
+        .info-value-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .info-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .info-unit {
+            font-size: 0.85rem;
+            color: #f4e4c1;
+        }
+        
+        .info-status {
+            padding: 0.2rem 0.6rem;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            color: #fff;
+        }
+        
+        .info-detail {
+            font-size: 0.7rem;
+            color: #9b9b9b;
+        }
+        
+        .content {
+            margin-top: 200px;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>NAKHON PHANOM</h1>
+    </div>
+    
+    <div class="info-bar">
+        <div class="info-container">
+            <div class="info-item">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <div class="info-label">คุณภาพอากาศ PM2.5</div>
+                    <div class="info-value-wrapper">
+                        <span class="info-value">32</span>
+                        <span class="info-unit">AQI</span>
+                        <span class="info-status">ดี</span>
+                    </div>
+                    <div class="info-detail">PM2.5: 15 µg/m³ • อัพเดท: 5 นาทีที่แล้ว</div>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                        <circle cx="7" cy="17" r="2"/>
+                        <circle cx="13" cy="17" r="2"/>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <div class="info-label">การจราจรนครพนม</div>
+                    <div class="info-value-wrapper">
+                        <span class="info-value">ราบรื่น</span>
+                        <span class="info-status">Live</span>
+                    </div>
+                    <div class="info-detail">ถนนหลักทุกสายไหลลื่น • อัพเดท: 2 นาทีที่แล้ว</div>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <div class="info-label">สภาพอากาศ</div>
+                    <div class="info-value-wrapper">
+                        <span class="info-value">28</span>
+                        <span class="info-unit">°C</span>
+                        <span style="font-size: 0.85rem; color: #f4e4c1;">แดดจัด</span>
+                    </div>
+                    <div class="info-detail">ความชื้น: 65% • ลม: 12 km/h • อัพเดท: 10 นาทีที่แล้ว</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <h2>Test Info Bar</h2>
+        <p>Info Bar ควรแสดงอยู่ด้านบนนี้</p>
+    </div>
+</body>
+</html>

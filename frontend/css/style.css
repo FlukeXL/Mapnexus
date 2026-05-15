@@ -1515,16 +1515,18 @@ section {
 /* ========== Info Bar ========== */
 .info-bar {
     position: fixed;
-    top: 88px;
+    top: 85px;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 998;
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.98), rgba(40, 40, 40, 0.98));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 2px solid rgba(212, 175, 55, 0.3);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 40px rgba(212, 175, 55, 0.1);
     transition: var(--transition-normal);
+    display: block !important;
+    visibility: visible !important;
 }
 
 .info-container {
