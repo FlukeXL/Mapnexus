@@ -1519,3 +1519,211 @@ section {
 .page-header {
     margin-top: 85px;
 }
+
+/* ========== Weather Status Section ========== */
+.weather-status-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--off-white);
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.status-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-normal);
+}
+
+.status-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.status-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.status-icon svg {
+    color: var(--primary);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.status-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.status-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Circular Progress */
+.circular-progress {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: var(--light-gray);
+    stroke-width: 12;
+}
+
+.progress-ring-circle {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 534.07;
+    stroke-dashoffset: 534.07;
+    transition: stroke-dashoffset 1.5s ease, stroke 0.5s ease;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* PM2.5 Ring Colors */
+.pm25-ring {
+    stroke: #4caf50;
+}
+
+.pm25-ring.moderate {
+    stroke: #ffc107;
+}
+
+.pm25-ring.unhealthy {
+    stroke: #f44336;
+}
+
+/* Traffic Ring Colors */
+.traffic-ring {
+    stroke: #4caf50;
+}
+
+.traffic-ring.moderate {
+    stroke: #ffc107;
+}
+
+.traffic-ring.heavy {
+    stroke: #f44336;
+}
+
+/* Temperature Ring Colors */
+.temp-ring {
+    stroke: #4caf50;
+}
+
+.temp-ring.warm {
+    stroke: #ff9800;
+}
+
+.temp-ring.hot {
+    stroke: #f44336;
+}
+
+.progress-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-value {
+    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    display: block;
+}
+
+.progress-unit {
+    font-size: 1.5rem;
+    color: var(--medium-gray);
+    font-weight: 600;
+}
+
+.progress-label {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-details {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--light-gray);
+}
+
+.detail-item {
+    text-align: center;
+}
+
+.detail-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--medium-gray);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .circular-progress {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .progress-value {
+        font-size: 3rem;
+    }
+}

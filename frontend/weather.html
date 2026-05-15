@@ -21,7 +21,7 @@
                 <li><a href="weather.html" class="nav-link active">พยากรณ์อากาศ</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="btn-secondary">เข้าสู่ระบบ</button>
+                <button type="button" class="btn-secondary">เข้าสู่ระบบ</button>
             </div>
         </div>
     </nav>
@@ -35,6 +35,133 @@
             </div>
         </div>
     </section>
+
+    <!-- Weather Status Section -->
+    <section class="weather-status-section">
+        <div class="container">
+            <div class="status-grid">
+                <!-- PM2.5 Card -->
+                <div class="status-card pm25-card">
+                    <div class="status-header">
+                        <div class="status-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <h3 class="status-title">คุณภาพอากาศ PM2.5</h3>
+                    </div>
+                    <div class="status-body">
+                        <div class="circular-progress">
+                            <svg class="progress-ring" width="200" height="200">
+                                <circle class="progress-ring-bg" cx="100" cy="100" r="85" />
+                                <circle class="progress-ring-circle pm25-ring" cx="100" cy="100" r="85" />
+                            </svg>
+                            <div class="progress-content">
+                                <span class="progress-value" id="pm25-value">25</span>
+                                <span class="progress-unit">%</span>
+                                <span class="progress-label" id="pm25-status">ดี</span>
+                            </div>
+                        </div>
+                        <div class="status-details">
+                            <div class="detail-item">
+                                <span class="detail-label">ค่า AQI</span>
+                                <span class="detail-value" id="pm25-aqi">32</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">PM2.5</span>
+                                <span class="detail-value" id="pm25-raw">15 µg/m³</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traffic Card -->
+                <div class="status-card traffic-card">
+                    <div class="status-header">
+                        <div class="status-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                <circle cx="7" cy="17" r="2"/>
+                                <circle cx="13" cy="17" r="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="status-title">การจราจร</h3>
+                    </div>
+                    <div class="status-body">
+                        <div class="circular-progress">
+                            <svg class="progress-ring" width="200" height="200">
+                                <circle class="progress-ring-bg" cx="100" cy="100" r="85" />
+                                <circle class="progress-ring-circle traffic-ring" cx="100" cy="100" r="85" />
+                            </svg>
+                            <div class="progress-content">
+                                <span class="progress-value" id="traffic-value">20</span>
+                                <span class="progress-unit">%</span>
+                                <span class="progress-label" id="traffic-status">ราบรื่น</span>
+                            </div>
+                        </div>
+                        <div class="status-details">
+                            <div class="detail-item">
+                                <span class="detail-label">สถานะ</span>
+                                <span class="detail-value" id="traffic-text">ปกติ</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">อัพเดท</span>
+                                <span class="detail-value">2 นาทีที่แล้ว</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temperature Card -->
+                <div class="status-card temp-card">
+                    <div class="status-header">
+                        <div class="status-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/>
+                                <line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            </svg>
+                        </div>
+                        <h3 class="status-title">อุณหภูมิ</h3>
+                    </div>
+                    <div class="status-body">
+                        <div class="circular-progress">
+                            <svg class="progress-ring" width="200" height="200">
+                                <circle class="progress-ring-bg" cx="100" cy="100" r="85" />
+                                <circle class="progress-ring-circle temp-ring" cx="100" cy="100" r="85" />
+                            </svg>
+                            <div class="progress-content">
+                                <span class="progress-value" id="temp-value">33</span>
+                                <span class="progress-unit">%</span>
+                                <span class="progress-label" id="temp-status">อบอุ่น</span>
+                            </div>
+                        </div>
+                        <div class="status-details">
+                            <div class="detail-item">
+                                <span class="detail-label">อุณหภูมิ</span>
+                                <span class="detail-value" id="temp-celsius">28°C</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">ความชื้น</span>
+                                <span class="detail-value" id="temp-humidity">65%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="js/app.js"></script>
+    <script src="js/weather-status.js"></script>
 </body>
 </html>
