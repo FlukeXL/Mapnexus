@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Bar Header Preview - NAKHON PHANOM</title>
+    <link rel="stylesheet" href="frontend/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&family=Noto+Serif+Thai:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        .preview-container {
+            padding-top: 200px;
+            min-height: 100vh;
+        }
+        .preview-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .preview-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #b8941e, #d4af37, #f4e4c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .preview-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .feature-item {
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+        .feature-item h3 {
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+        .feature-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1 class="logo-text">NAKHON PHANOM</h1>
+                <p class="logo-subtitle">เมืองแห่งมนต์เสน่ห์โขง</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="frontend/index.html" class="nav-link active">หน้าหลัก</a></li>
+                <li><a href="frontend/explore.html" class="nav-link">นำเที่ยว</a></li>
+                <li><a href="frontend/checkin.html" class="nav-link">เช็คอิน</a></li>
+                <li><a href="frontend/weather.html" class="nav-link">พยากรณ์อากาศ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button type="button" class="btn-secondary">เข้าสู่ระบบ</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Info Bar Header - Premium Luxury Design -->
+    <div class="info-bar-header">
+        <div class="info-bar-container">
+            <!-- PM2.5 -->
+            <div class="info-bar-item">
+                <div class="info-bar-icon pm25-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    </svg>
+                </div>
+                <div class="info-bar-content">
+                    <span class="info-bar-label">PM2.5</span>
+                    <div class="info-bar-value-wrapper">
+                        <span class="info-bar-value" id="header-pm25">32</span>
+                        <span class="info-bar-unit">AQI</span>
+                    </div>
+                    <span class="info-bar-status good" id="header-pm25-status">ดี</span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="info-bar-divider"></div>
+
+            <!-- Traffic -->
+            <div class="info-bar-item">
+                <div class="info-bar-icon traffic-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                        <circle cx="7" cy="17" r="2"/>
+                        <circle cx="13" cy="17" r="2"/>
+                    </svg>
+                </div>
+                <div class="info-bar-content">
+                    <span class="info-bar-label">การจราจร</span>
+                    <div class="info-bar-value-wrapper">
+                        <span class="info-bar-value" id="header-traffic">ราบรื่น</span>
+                    </div>
+                    <span class="info-bar-status smooth" id="header-traffic-status">
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="10"/>
+                        </svg>
+                        Live
+                    </span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="info-bar-divider"></div>
+
+            <!-- Temperature -->
+            <div class="info-bar-item">
+                <div class="info-bar-icon temp-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </div>
+                <div class="info-bar-content">
+                    <span class="info-bar-label">อุณหภูมิ</span>
+                    <div class="info-bar-value-wrapper">
+                        <span class="info-bar-value" id="header-temp">28</span>
+                        <span class="info-bar-unit">°C</span>
+                    </div>
+                    <span class="info-bar-status warm" id="header-temp-status">อบอุ่น</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Content -->
+    <div class="preview-container">
+        <div class="preview-content">
+            <h1 class="preview-title">✨ Info Bar Header - Premium Luxury Design ✨</h1>
+            
+            <p class="preview-description">
+                <strong>Info Bar Header</strong> ที่แสดงอยู่ด้านบนนี้ได้รับการออกแบบใหม่ให้มีความหรูหราและสวยงาม<br>
+                พร้อมแสดงข้อมูล <strong>PM2.5</strong>, <strong>การจราจร</strong>, และ <strong>อุณหภูมิ</strong> แบบเรียลไทม์
+            </p>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>🎨 พื้นหลังสีดำหรูหรา</h3>
+                    <p>ใช้สีดำเข้มแบบ gradient พร้อมเส้นขอบสีทองที่เรืองแสง สร้างความรู้สึกหรูหราและพรีเมียม</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>💎 การ์ดขนาดใหญ่</h3>
+                    <p>แต่ละเมตริกมีการ์ดของตัวเอง ขนาดใหญ่ พร้อม padding และ spacing ที่เหมาะสม</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>✨ ไอคอนเรืองแสง</h3>
+                    <p>ไอคอนขนาด 64x64px พร้อมเอฟเฟกต์เรืองแสงสีทอง และ animation ที่นุ่มนวล</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>🔢 ตัวเลขสวยงาม</h3>
+                    <p>ตัวเลขขนาดใหญ่ 2.25rem พร้อม gradient สีทองที่เคลื่อนไหว สร้างความโดดเด่น</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>🌟 Hover Effects</h3>
+                    <p>เมื่อเอาเมาส์ชี้จะมีการเคลื่อนไหวและเรืองแสงเพิ่มขึ้น สร้างความน่าสนใจ</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>💫 Divider สวยงาม</h3>
+                    <p>เส้นแบ่งสีทองพร้อมเพชรหมุนตรงกลาง เพิ่มความหรูหราและเป็นเอกลักษณ์</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>🎭 Status Badges</h3>
+                    <p>ป้ายสถานะมีเอฟเฟกต์ shine และ glow พร้อมสีที่บอกสถานะได้ชัดเจน</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>📱 Responsive Design</h3>
+                    <p>ปรับตัวได้ดีบนทุกหน้าจอ จาก Desktop ไปจนถึง Mobile</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>⚡ Real-time Updates</h3>
+                    <p>ข้อมูลอัพเดทแบบเรียลไทม์ผ่าน JavaScript API</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); border-radius: 8px; border: 2px solid rgba(212, 175, 55, 0.3);">
+                <h3 style="color: #d4af37; text-align: center; margin-bottom: 1rem;">💡 คำแนะนำ</h3>
+                <p style="text-align: center; color: #666;">
+                    ลองเลื่อนเมาส์ไปชี้ที่แต่ละการ์ดเพื่อดู Hover Effects ที่สวยงาม<br>
+                    Info Bar Header นี้จะแสดงอยู่ในทุกหน้าของเว็บไซต์ (หน้าหลัก, นำเที่ยว, เช็คอิน, พยากรณ์อากาศ)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="frontend/js/info-bar-header.js"></script>
+</body>
+</html>
