@@ -25,7 +25,85 @@
             </div>
         </div>
     </nav>
-    <section class="page-header">
+
+    <!-- Info Bar Header -->
+    <div class="info-bar-header">
+        <div class="info-bar-container">
+            <!-- PM2.5 -->
+            <div class="info-bar-item">
+                <div class="info-bar-icon pm25-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    </svg>
+                </div>
+                <div class="info-bar-content">
+                    <span class="info-bar-label">PM2.5</span>
+                    <div class="info-bar-value-wrapper">
+                        <span class="info-bar-value" id="header-pm25">32</span>
+                        <span class="info-bar-unit">AQI</span>
+                    </div>
+                    <span class="info-bar-status good" id="header-pm25-status">ดี</span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="info-bar-divider"></div>
+
+            <!-- Traffic -->
+            <div class="info-bar-item">
+                <div class="info-bar-icon traffic-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                        <circle cx="7" cy="17" r="2"/>
+                        <circle cx="13" cy="17" r="2"/>
+                    </svg>
+                </div>
+                <div class="info-bar-content">
+                    <span class="info-bar-label">การจราจร</span>
+                    <div class="info-bar-value-wrapper">
+                        <span class="info-bar-value" id="header-traffic">ราบรื่น</span>
+                    </div>
+                    <span class="info-bar-status smooth" id="header-traffic-status">
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="10"/>
+                        </svg>
+                        Live
+                    </span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="info-bar-divider"></div>
+
+            <!-- Temperature -->
+            <div class="info-bar-item">
+                <div class="info-bar-icon temp-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </div>
+                <div class="info-bar-content">
+                    <span class="info-bar-label">อุณหภูมิ</span>
+                    <div class="info-bar-value-wrapper">
+                        <span class="info-bar-value" id="header-temp">28</span>
+                        <span class="info-bar-unit">°C</span>
+                    </div>
+                    <span class="info-bar-status warm" id="header-temp-status">อบอุ่น</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header -->
         <div class="page-header-bg"></div>
         <div class="container">
             <div class="page-header-content">
@@ -162,6 +240,7 @@
     </section>
 
     <script src="js/app.js"></script>
+    <script src="js/info-bar-header.js"></script>
     <script src="js/weather-status.js"></script>
 </body>
 </html>
