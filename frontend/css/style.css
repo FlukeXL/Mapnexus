@@ -1575,17 +1575,114 @@ section {
 }
 
 .info-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: 50%;
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.08));
     border: 2px solid rgba(212, 175, 55, 0.3);
     flex-shrink: 0;
     transition: var(--transition-normal);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.info-icon-wrapper {
     position: relative;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+}
+
+/* Circular Progress Ring */
+.progress-ring {
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: rgba(212, 175, 55, 0.1);
+    stroke-width: 3;
+}
+
+.progress-ring-circle {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease, stroke 0.3s ease;
+    filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* PM2.5 Progress Colors */
+.pm25-progress {
+    stroke: #4caf50;
+}
+
+.pm25-progress.moderate {
+    stroke: #ffc107;
+}
+
+.pm25-progress.unhealthy {
+    stroke: #f44336;
+}
+
+/* Traffic Progress Colors */
+.traffic-progress {
+    stroke: #4caf50;
+    animation: pulse-ring 2s ease-in-out infinite;
+}
+
+.traffic-progress.moderate {
+    stroke: #ffc107;
+}
+
+.traffic-progress.heavy {
+    stroke: #f44336;
+}
+
+/* Weather Progress */
+.weather-progress {
+    stroke: #4caf50;
+}
+
+.weather-progress.cool {
+    stroke: #4caf50;
+}
+
+.weather-progress.warm {
+    stroke: #ff9800;
+}
+
+.weather-progress.hot {
+    stroke: #f44336;
+}
+
+@keyframes pulse-ring {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes rotate-ring {
+    0% {
+        stroke-dashoffset: 150.8;
+    }
+    50% {
+        stroke-dashoffset: 75.4;
+    }
+    100% {
+        stroke-dashoffset: 150.8;
+    }
 }
 
 .info-icon::after {

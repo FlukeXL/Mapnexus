@@ -54,7 +54,7 @@ class InfoBar {
             
             const valueElement = document.getElementById('pm25-value');
             const statusElement = valueElement?.parentElement.querySelector('.info-status');
-            const iconElement = document.querySelector('.pm25-icon');
+            const progressElement = document.querySelector('.pm25-progress');
             const detailElement = valueElement?.parentElement.parentElement.querySelector('.info-detail');
             
             if (valueElement) {
@@ -62,7 +62,7 @@ class InfoBar {
             }
             
             if (detailElement) {
-                detailElement.textContent = `PM2.5: ${pm25Value} µg/m³`;
+                detailElement.textContent = `PM2.5: ${pm25Value} µg/m³ • อัพเดท: เมื่อสักครู่`;
             }
             
             // Update status and color
@@ -72,8 +72,13 @@ class InfoBar {
                 statusElement.className = `info-status ${status.class}`;
             }
             
-            if (iconElement) {
-                iconElement.className = `info-icon pm25-icon ${status.class}`;
+            // Update progress ring (น้อย = ดี, มาก = ไม่ดี)
+            if (progressElement) {
+                const percentage = Math.min(aqi / 500, 1); // Max AQI 500
+                const circumference = 150.8;
+                const offset = circumference - (percentage * circumference);
+                progressElement.style.strokeDashoffset = offset;
+                progressElement.className = `progress-ring-circle pm25-progress ${status.class}`;
             }
             
         } catch (error) {
@@ -98,7 +103,7 @@ class InfoBar {
         return { text: 'ไม่ดี', class: 'unhealthy' };
     }
 
-    // Update Traffic Data
+    // Update Traffic Data (น้อย = ดี, มาก = ไม่ดี)
     async updateTraffic() {
         try {
             // TODO: Replace with actual API call
@@ -107,23 +112,27 @@ class InfoBar {
             
             // Simulated data
             const statuses = [
-                { text: 'ราบรื่น', class: 'smooth' },
-                { text: 'ปานกลาง', class: 'moderate' },
-                { text: 'หนาแน่น', class: 'heavy' }
+                { text: 'ราบรื่น', class: 'smooth', progress: 20 },      // น้อย = ดี
+                { text: 'ปานกลาง', class: 'moderate', progress: 55 },   // กลาง
+                { text: 'หนาแน่น', class: 'heavy', progress: 85 }        // มาก = ไม่ดี
             ];
             
             const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
             
             const valueElement = document.getElementById('traffic-value');
-            const iconElement = document.querySelector('.traffic-icon');
+            const progressElement = document.querySelector('.traffic-progress');
             
             if (valueElement) {
                 valueElement.textContent = randomStatus.text;
                 valueElement.className = `info-value traffic-${randomStatus.class}`;
             }
             
-            if (iconElement) {
-                iconElement.className = `info-icon traffic-icon ${randomStatus.class}`;
+            // Update progress ring (น้อย = ดี, มาก = ไม่ดี)
+            if (progressElement) {
+                const circumference = 150.8;
+                const offset = circumference - ((randomStatus.progress / 100) * circumference);
+                progressElement.style.strokeDashoffset = offset;
+                progressElement.className = `progress-ring-circle traffic-progress ${randomStatus.class}`;
             }
             
         } catch (error) {
@@ -131,7 +140,7 @@ class InfoBar {
         }
     }
 
-    // Update Weather Data
+    // Update Weather Data (น้อย = สบาย, มาก = ร้อน)
     async updateWeather() {
         try {
             // TODO: Replace with actual API call
@@ -139,7 +148,7 @@ class InfoBar {
             // const data = await response.json();
             
             // Simulated data
-            const temp = Math.floor(Math.random() * 10) + 25;
+            const temp = Math.floor(Math.random() * 10) + 25; // 25-35°C
             const humidity = Math.floor(Math.random() * 30) + 50;
             const wind = Math.floor(Math.random() * 15) + 5;
             
@@ -149,6 +158,7 @@ class InfoBar {
             const tempElement = document.getElementById('temp-value');
             const descElement = tempElement?.parentElement.querySelector('.weather-desc');
             const detailElement = tempElement?.parentElement.parentElement.querySelector('.info-detail');
+            const progressElement = document.querySelector('.weather-progress');
             
             if (tempElement) {
                 tempElement.textContent = temp;
@@ -159,7 +169,27 @@ class InfoBar {
             }
             
             if (detailElement) {
-                detailElement.textContent = `ความชื้น: ${humidity}% | ลม: ${wind} km/h`;
+                detailElement.textContent = `ความชื้น: ${humidity}% • ลม: ${wind} km/h • อัพเดท: เมื่อสักครู่`;
+            }
+            
+            // Update progress ring based on temperature (น้อย = สบาย, มาก = ร้อน)
+            // 25°C = 0%, 40°C = 100%
+            if (progressElement) {
+                const minTemp = 25;
+                const maxTemp = 40;
+                const percentage = Math.min(Math.max((temp - minTemp) / (maxTemp - minTemp), 0), 1);
+                const circumference = 150.8;
+                const offset = circumference - (percentage * circumference);
+                progressElement.style.strokeDashoffset = offset;
+                
+                // เปลี่ยนสีตามอุณหภูมิ
+                let tempClass = 'cool';
+                if (temp >= 35) {
+                    tempClass = 'hot';
+                } else if (temp >= 30) {
+                    tempClass = 'warm';
+                }
+                progressElement.className = `progress-ring-circle weather-progress ${tempClass}`;
             }
             
         } catch (error) {
